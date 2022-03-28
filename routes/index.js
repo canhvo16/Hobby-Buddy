@@ -20,4 +20,10 @@ router.post('/post', controllers.createPost)
 
 router.post('/group', controllers.createGroup)
 
+router.put('/person/:id', controllers.updatePerson)
+
+router.put('/post')
+
+router.put('/group')
+
 module.exports = router
