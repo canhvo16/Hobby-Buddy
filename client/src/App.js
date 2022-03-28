@@ -1,8 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
+import Nav from './components/Nav'
 import './style/App.css'
 
-function App() {
-  return <div className="App">Hi</div>
+const App = () => {
+  return (
+    <div className="App">
+      <Nav />
+      <main>
+        <Routes></Routes>
+      </main>
+    </div>
+  )
 }
 
 export default App
