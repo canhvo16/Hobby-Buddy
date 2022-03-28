@@ -18,4 +18,6 @@ router.post('/person', controllers.createPerson)
 
 router.post('/post', controllers.createPost)
 
+router.post('/group', controllers.createGroup)
+
 module.exports = router

@@ -74,6 +74,16 @@ const createPost = async (req, res) => {
   }
 }
 
+const createGroup = async (req, res) => {
+  try {
+    const group = await new Group(req.body)
+    await group.save()
+    return res.status(201).json({ group })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getPersons,
   getPersonById,
@@ -82,5 +92,6 @@ module.exports = {
   getGroups,
   getGroupById,
   createPerson,
-  createPost
+  createPost,
+  createGroup
 }
