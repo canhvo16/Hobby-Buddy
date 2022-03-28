@@ -6,6 +6,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const main = async () => {
   const person1 = await new Person({
     name: 'Canh',
+    username: 'canhvo16',
+    password: 'coding',
     photo:
       'https://img.freepik.com/free-vector/happy-sushi-salmon-flat-cartoon-style_138676-2635.jpg?size=338&ext=jpg',
     age: 24,

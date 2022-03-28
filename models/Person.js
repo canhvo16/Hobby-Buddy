@@ -3,6 +3,8 @@ const { Schema } = require('mongoose')
 const Person = new Schema(
   {
     name: { type: String, required: true },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
     photo: { type: String, required: false },
     cover: { type: String, required: false },
     age: { type: Number, require: true },
