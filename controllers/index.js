@@ -117,6 +117,39 @@ const updateGroup = async (req, res) => {
   }
 }
 
+const deletePerson = async (req, res) => {
+  try {
+    const person = await Person.findByIdAndDelete(req.params.id)
+    if (person) {
+      res.status(201).send('Person deleted')
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndDelete(req.params.id)
+    if (post) {
+      res.status(201).send('Post deleted')
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+const deleteGroup = async (req, res) => {
+  try {
+    const group = await Group.findByIdAndDelete(req.params.id)
+    if (group) {
+      res.status(201).send('Group deleted')
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getPersons,
   getPersonById,
@@ -129,5 +162,8 @@ module.exports = {
   createGroup,
   updatePerson,
   updatePost,
-  updateGroup
+  updateGroup,
+  deletePerson,
+  deletePost,
+  deleteGroup
 }

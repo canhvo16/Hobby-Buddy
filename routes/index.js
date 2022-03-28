@@ -26,4 +26,10 @@ router.put('/post/:id', controllers.updatePost)
 
 router.put('/group/:id', controllers.updateGroup)
 
+router.delete('/person/:id', controllers.deletePerson)
+
+router.delete('/post/:id', controllers.deletePost)
+
+router.delete('/group/:id', controllers.deleteGroup)
+
 module.exports = router
