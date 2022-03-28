@@ -4,6 +4,7 @@ const Person = new Schema(
   {
     name: { type: String, required: true },
     photo: { type: String, required: false },
+    cover: { type: String, required: false },
     age: { type: Number, require: true },
     location: { type: String, require: true },
     hobbies: { type: String, required: false },
