@@ -24,6 +24,6 @@ router.put('/person/:id', controllers.updatePerson)
 
 router.put('/post/:id', controllers.updatePost)
 
-router.put('/group')
+router.put('/group/:id', controllers.updateGroup)
 
 module.exports = router
