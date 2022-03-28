@@ -22,7 +22,7 @@ router.post('/group', controllers.createGroup)
 
 router.put('/person/:id', controllers.updatePerson)
 
-router.put('/post')
+router.put('/post/:id', controllers.updatePost)
 
 router.put('/group')
 
