@@ -4,4 +4,6 @@ const router = Router()
 
 router.get('/person', controllers.getPersons)
 
+router.get('/person/:id', controllers.getPersonById)
+
 module.exports = router
