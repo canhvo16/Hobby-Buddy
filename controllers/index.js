@@ -64,6 +64,16 @@ const createPerson = async (req, res) => {
   }
 }
 
+const createPost = async (req, res) => {
+  try {
+    const post = await new Post(req.body)
+    await post.save()
+    return res.status(201).json({ post })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getPersons,
   getPersonById,
@@ -71,5 +81,6 @@ module.exports = {
   getPostById,
   getGroups,
   getGroupById,
-  createPerson
+  createPerson,
+  createPost
 }
