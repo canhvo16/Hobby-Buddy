@@ -14,4 +14,6 @@ router.get('/group', controllers.getGroups)
 
 router.get('/group/:id', controllers.getGroupById)
 
+router.post('/person', controllers.createPerson)
+
 module.exports = router
