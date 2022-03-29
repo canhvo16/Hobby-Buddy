@@ -28,7 +28,10 @@ const App = () => {
               />
             }
           />
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route
+            path="/profile/:id"
+            element={<ProfilePage BASE_URL={BASE_URL} />}
+          />
         </Routes>
       </main>
     </div>

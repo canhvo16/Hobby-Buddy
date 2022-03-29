@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
-const CreateAccount = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
+const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
 
   let navigate = useNavigate()
 
@@ -45,7 +45,6 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
     const savePerson = async () => {
       await axios.post(`${BASE_URL}/person`, data).then(function (response) {
         person = (response.data.person)
-        console.log(person)
       })
       .catch(function (error) {
         console.log(error)
