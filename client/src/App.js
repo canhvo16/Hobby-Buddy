@@ -3,9 +3,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from './components/Nav'
 import LoginPage from './pages/LoginPage'
+import ProfilePage from './pages/ProfilePage'
 import './style/App.css'
 
 const App = () => {
+  const BASE_URL = 'http://localhost:3001/api'
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   let nav = isLoggedIn ? <Nav /> : <Link to="/about">About</Link>
@@ -15,7 +17,13 @@ const App = () => {
       {nav}
       <main>
         <Routes>
-          <Route index element={<LoginPage />} />
+          <Route
+            index
+            element={
+              <LoginPage setIsLoggedIn={setIsLoggedIn} BASE_URL={BASE_URL} />
+            }
+          />
+          <Route path="/profile/:id" element={<ProfilePage />} />
         </Routes>
       </main>
     </div>

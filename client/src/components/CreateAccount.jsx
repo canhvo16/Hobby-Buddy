@@ -1,0 +1,84 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from 'axios'
+
+const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
+
+  let navigate = useNavigate()
+
+  const [name, setName] = useState('')
+  const [age, setAge] = useState()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [location, setLocation] = useState('') 
+
+  const saveName = (e) => {
+    setName(e.target.value)
+  }
+
+  const saveAge = (e) => {
+    setAge(e.target.value)
+  }
+
+  const saveUsername = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const savePassword = (e) => {
+    setPassword(e.target.value)
+    console.log(password)
+  }
+
+  const saveLocation = (e) => {
+    setLocation(e.target.value)
+  }
+
+  const createPerson = () => {
+    const data = {
+      name: name,
+      age: age,
+      username: username,
+      password: password,
+      location: location
+    }
+    const savePerson = async () => {
+      await axios.post(`${BASE_URL}/person`, data).then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
+    savePerson()
+    setIsLoggedIn(true)
+    navigate('/profile')
+  }
+
+  return (
+    <div>
+      <h3>Create an Account</h3>
+      <form onSubmit={createPerson}>
+        <h5>Name</h5>
+        <input type='text' placeholder="Name" value={name} onChange={saveName}/>
+        <h5>Age</h5>
+        <input type='number' placeholder="Age" value={age} onChange={saveAge}/>
+        <h5>Username</h5>
+        <input type='text' placeholder="Username" value={username} onChange={saveUsername}/>
+        <h5>Password</h5>
+        <input type='text' placeholder="Password" value={password} onChange={savePassword}/>
+        <h5>Location</h5>
+        <select id="location" type='text' placeholder="Location" value={location} onChange={saveLocation}>
+          <option value=""></option>
+          <option value="New York City, NY">New York City, NY</option>
+          <option value="Los Angeles, CA">Los Angeles, CA</option>
+          <option value="Chicago, IL">Chicago, IL</option>
+          <option value="Houston, TX">Houston, TX</option>
+          <option value="Phoenix, AZ">Phoenix, AZ</option>
+        </select>
+        <button>Create Account</button>
+      </form>
+    </div>
+  )
+}
+
+export default CreateAccount
