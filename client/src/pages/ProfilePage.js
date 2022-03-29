@@ -19,7 +19,7 @@ const ProfilePage = ({ BASE_URL }) => {
 
   const deleteAccount = async () => {
     if (
-      confirm(
+      window.confirm(
         'This will permanently delete your account, are you sure this is what you want to do?'
       )
     ) {
