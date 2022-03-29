@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Info from '../components/Info'
@@ -8,6 +8,7 @@ const ProfilePage = ({ BASE_URL }) => {
   const [user, setUser] = useState({})
 
   let { id } = useParams()
+  let navigate = useNavigate()
 
   useEffect(() => {
     const getPerson = async () => {
@@ -23,7 +24,8 @@ const ProfilePage = ({ BASE_URL }) => {
         'This will permanently delete your account, are you sure this is what you want to do?'
       )
     ) {
-      console.log('Pressed yes')
+      await axios.delete(`${BASE_URL}/person/${id}`)
+      navigate('/')
     } else {
       console.log('Pressed no')
     }
