@@ -1,6 +1,6 @@
 import CreateAccount from '../components/CreateAccount'
 
-const LoginPage = ({ setIsLoggedIn, BASE_URL }) => {
+const LoginPage = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
   return (
     <div>
       <h1 className="title">Hobby Buddy</h1>
@@ -11,7 +11,11 @@ const LoginPage = ({ setIsLoggedIn, BASE_URL }) => {
         <input type="text" placeholder="Enter Password" required />
         <button>Login</button>
       </form>
-      <CreateAccount setIsLoggedIn={setIsLoggedIn} BASE_URL={BASE_URL} />
+      <CreateAccount
+        setIsLoggedIn={setIsLoggedIn}
+        BASE_URL={BASE_URL}
+        isLoggedIn={isLoggedIn}
+      />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
-const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
+const CreateAccount = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
 
   let navigate = useNavigate()
 
@@ -26,14 +26,14 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
 
   const savePassword = (e) => {
     setPassword(e.target.value)
-    console.log(password)
   }
 
   const saveLocation = (e) => {
     setLocation(e.target.value)
   }
 
-  const createPerson = () => {
+  const createPerson = async (e) => {
+    e.preventDefault()
     const data = {
       name: name,
       age: age,
@@ -41,17 +41,19 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
       password: password,
       location: location
     }
+    let person 
     const savePerson = async () => {
       await axios.post(`${BASE_URL}/person`, data).then(function (response) {
-        console.log(response)
+        person = (response.data.person)
+        console.log(person)
       })
       .catch(function (error) {
         console.log(error)
       })
     }
-    savePerson()
-    setIsLoggedIn(true)
-    navigate('/profile')
+    await savePerson()
+    await setIsLoggedIn(true)
+    navigate(`/profile/${person._id}`)
   }
 
   return (

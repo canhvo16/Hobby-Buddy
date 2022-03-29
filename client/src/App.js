@@ -9,6 +9,7 @@ import './style/App.css'
 const App = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
 
   let nav = isLoggedIn ? <Nav /> : <Link to="/about">About</Link>
 
@@ -20,7 +21,11 @@ const App = () => {
           <Route
             index
             element={
-              <LoginPage setIsLoggedIn={setIsLoggedIn} BASE_URL={BASE_URL} />
+              <LoginPage
+                setIsLoggedIn={setIsLoggedIn}
+                BASE_URL={BASE_URL}
+                isLoggedIn={isLoggedIn}
+              />
             }
           />
           <Route path="/profile/:id" element={<ProfilePage />} />
