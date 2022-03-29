@@ -13,17 +13,29 @@ const ProfilePage = ({ BASE_URL }) => {
     const getPerson = async () => {
       let person = await axios.get(`${BASE_URL}/person/${id}`)
       setUser(person.data)
-      console.log(person.data)
     }
     getPerson()
   }, [])
+
+  const deleteAccount = async () => {
+    if (
+      confirm(
+        'This will permanently delete your account, are you sure this is what you want to do?'
+      )
+    ) {
+      console.log('Pressed yes')
+    } else {
+      console.log('Pressed no')
+    }
+  }
 
   return (
     <div>
       <img src={user.photo} id="profilePhoto" />
       <h3>{user.name}</h3>
-      <Info user={user} />
+      <Info user={user} id={id} BASE_URL={BASE_URL} setUser={setUser} />
       <Friends user={user} />
+      <button onClick={deleteAccount}>Delete Account</button>
     </div>
   )
 }

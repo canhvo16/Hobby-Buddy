@@ -9,7 +9,6 @@ import './style/App.css'
 const App = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState('')
 
   let nav = isLoggedIn ? <Nav /> : <Link to="/about">About</Link>
 
