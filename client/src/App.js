@@ -10,7 +10,11 @@ const App = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  let nav = isLoggedIn ? <Nav /> : <Link to="/about">About</Link>
+  let nav = isLoggedIn ? (
+    <Nav setIsLoggedIn={setIsLoggedIn} />
+  ) : (
+    <Link to="/about">About</Link>
+  )
 
   return (
     <div className="App">

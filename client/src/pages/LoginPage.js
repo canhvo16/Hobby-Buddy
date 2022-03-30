@@ -25,7 +25,14 @@ const LoginPage = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
         console.log(error)
       })
     let personDetails = person.data
-    console.log(personDetails)
+    if (personDetails.password === personPassword) {
+      await setIsLoggedIn(true)
+      navigate(`/profile/${personDetails._id}`)
+    } else {
+      alert(
+        "The username and password you provided do not match! Please remember usernames and passwords are case sensitive and try again! If you're still having trouble, please contact Canh (details in About Page) for assitance, thank you!"
+      )
+    }
   }
 
   return (

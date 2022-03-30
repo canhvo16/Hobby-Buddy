@@ -34,25 +34,34 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
 
   const createPerson = async (e) => {
     e.preventDefault()
-    const data = {
-      name: name,
-      age: age,
-      username: username,
-      password: password,
-      location: location
-    }
-    let person 
-    const savePerson = async () => {
-      await axios.post(`${BASE_URL}/person`, data).then(function (response) {
-        person = (response.data.person)
-      })
+    const existingUser = await axios
+      .get(`${BASE_URL}/checkPerson/${username}`)
       .catch(function (error) {
         console.log(error)
       })
+    if (existingUser === { username: username }) {
+      alert('A user with that username already exists, please try a different one!')
+    } else {
+      const data = {
+        name: name,
+        age: age,
+        username: username,
+        password: password,
+        location: location
+      }
+      let person 
+      const savePerson = async () => {
+        await axios.post(`${BASE_URL}/person`, data).then(function (response) {
+          person = (response.data.person)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      }
+      await savePerson()
+      await setIsLoggedIn(true)
+      navigate(`/profile/${person._id}`)
     }
-    await savePerson()
-    await setIsLoggedIn(true)
-    navigate(`/profile/${person._id}`)
   }
 
   return (

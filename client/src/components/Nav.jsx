@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
 
-const Nav = () => {
+const Nav = ({ setIsLoggedIn }) => {
+
+  const logout = () => {
+    setIsLoggedIn(false)
+  }
+
   return (
     <header>
       <h1>Hobby Buddy</h1>
@@ -9,6 +14,9 @@ const Nav = () => {
         <Link to='/about'>About</Link>
         <Link to='/profile'>Profile</Link>
         <Link to='/search'>Search</Link>
+        <Link to='/'>
+          <button onClick={logout}>Logout</button>
+        </Link>
       </nav>
     </header>
   )
