@@ -39,29 +39,30 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
       .catch(function (error) {
         console.log(error)
       })
-    if (existingUser === { username: username }) {
-      alert('A user with that username already exists, please try a different one!')
-    } else {
-      const data = {
-        name: name,
-        age: age,
-        username: username,
-        password: password,
-        location: location
-      }
-      let person 
-      const savePerson = async () => {
-        await axios.post(`${BASE_URL}/person`, data).then(function (response) {
-          person = (response.data.person)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      }
-      await savePerson()
-      await setIsLoggedIn(true)
-      navigate(`/profile/${person._id}`)
-    }
+    console.log(existingUser)
+    // if (existingUser === { username: username }) {
+    //   alert('A user with that username already exists, please try a different one!')
+    // } else {
+    //   const data = {
+    //     name: name,
+    //     age: age,
+    //     username: username,
+    //     password: password,
+    //     location: location
+    //   }
+    //   let person 
+    //   const savePerson = async () => {
+    //     await axios.post(`${BASE_URL}/person`, data).then(function (response) {
+    //       person = (response.data.person)
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error)
+    //     })
+    //   }
+    //   await savePerson()
+    //   await setIsLoggedIn(true)
+    //   navigate(`/profile/${person._id}`)
+    // }
   }
 
   return (
@@ -69,15 +70,15 @@ const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
       <h3>Create an Account</h3>
       <form onSubmit={createPerson}>
         <h5>Name</h5>
-        <input type='text' placeholder="Name" value={name} onChange={saveName}/>
+        <input type='text' placeholder="Name" value={name} onChange={saveName} required/>
         <h5>Age</h5>
-        <input type='number' placeholder="Age" value={age} onChange={saveAge}/>
+        <input type='number' placeholder="Age" value={age} onChange={saveAge} required/>
         <h5>Username</h5>
-        <input type='text' placeholder="Username" value={username} onChange={saveUsername}/>
+        <input type='text' placeholder="Username" value={username} onChange={saveUsername} required/>
         <h5>Password</h5>
-        <input type='text' placeholder="Password" value={password} onChange={savePassword}/>
+        <input type='text' placeholder="Password" value={password} onChange={savePassword} required/>
         <h5>Location</h5>
-        <select id="location" type='text' placeholder="Location" value={location} onChange={saveLocation}>
+        <select id="location" type='text' placeholder="Location" value={location} onChange={saveLocation} required>
           <option value=""></option>
           <option value="New York City, NY">New York City, NY</option>
           <option value="Los Angeles, CA">Los Angeles, CA</option>
