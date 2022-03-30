@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Nav from './components/Nav'
+import AboutPage from './pages/AboutPage'
 import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import './style/App.css'
@@ -16,17 +17,20 @@ const App = () => {
   ) : (
     <div>
       <h1>Hobby Buddy</h1>
+      <Link to="/">Login Page</Link>
       <Link to="/about">About</Link>
     </div>
   )
 
   let navigate = useNavigate()
 
-  const [personUsername, setPersonUsername] = useState('')
-  const [personPassword, setPersonPassword] = useState('')
-
   // LoginPage functions
   ////////////////////////////////////////////////////////////
+
+  const [personUsername, setPersonUsername] = useState('')
+  const [personPassword, setPersonPassword] = useState('')
+  const [showLoginPassword, setShowLoginPassword] = useState(false)
+
   const usernameCredential = (e) => {
     setPersonUsername(e.target.value)
   }
@@ -38,11 +42,12 @@ const App = () => {
   const checkCredentials = async (e) => {
     e.preventDefault()
     const person = await axios
-      .get(`${BASE_URL}/checkPerson/${personUsername}`)
+      .get(`${BASE_URL}/verifyPerson/${personUsername}`)
       .catch(function (error) {
         console.log(error)
       })
-    let personDetails = person.data
+    let personDetails = person.data[0]
+    console.log(personDetails)
     if (personDetails.password === personPassword) {
       setIsLoggedIn(true)
       navigate(`/profile/${personDetails._id}`)
@@ -52,6 +57,10 @@ const App = () => {
       )
     }
   }
+
+  const toggleLoginPassword = () => {
+    setShowLoginPassword(!showLoginPassword)
+  }
   ////////////////////////////////////////////////////////////
   // CreateAccount functions
   ////////////////////////////////////////////////////////////
@@ -60,6 +69,11 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [location, setLocation] = useState('')
+  const [showPasswordCreated, setShowPasswordCreated] = useState(false)
+
+  const togglePasswordCreated = () => {
+    setShowPasswordCreated(!showPasswordCreated)
+  }
 
   const saveName = (e) => {
     setName(e.target.value)
@@ -144,6 +158,10 @@ const App = () => {
                 savePassword={savePassword}
                 location={location}
                 saveLocation={saveLocation}
+                showLoginPassword={showLoginPassword}
+                toggleLoginPassword={toggleLoginPassword}
+                showPasswordCreated={showPasswordCreated}
+                togglePasswordCreated={togglePasswordCreated}
               />
             }
           />
@@ -151,6 +169,7 @@ const App = () => {
             path="/profile/:id"
             element={<ProfilePage BASE_URL={BASE_URL} />}
           />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
     </div>

@@ -1,4 +1,4 @@
-const Login = ({ checkCredentials, personPassword, personUsername, usernameCredential, passwordCredential }) => {
+const Login = ({ checkCredentials, personPassword, personUsername, usernameCredential, passwordCredential, showLoginPassword, toggleLoginPassword }) => {
   return (
     <div className="loginBox">
       <h3>Login Info</h3>
@@ -13,7 +13,7 @@ const Login = ({ checkCredentials, personPassword, personUsername, usernameCrede
         />
         <h5>Password</h5>
         <input
-          type="text"
+          type={showLoginPassword ? 'text' : 'password'}
           placeholder="Enter Password"
           value={personPassword}
           onChange={passwordCredential}
@@ -21,6 +21,7 @@ const Login = ({ checkCredentials, personPassword, personUsername, usernameCrede
         />
         <button>Login</button>
       </form>
+      <button onClick={toggleLoginPassword}>Show Password</button>
     </div>
   )
 }

@@ -10,6 +10,8 @@ const LoginPage = (props) => {
         personUsername={props.personUsername}
         usernameCredential={props.usernameCredential}
         passwordCredential={props.passwordCredential}
+        showLoginPassword={props.showLoginPassword}
+        toggleLoginPassword={props.toggleLoginPassword}
       />
       <CreateAccount
         setIsLoggedIn={props.setIsLoggedIn}
@@ -26,6 +28,8 @@ const LoginPage = (props) => {
         savePassword={props.savePassword}
         location={props.location}
         saveLocation={props.saveLocation}
+        showPasswordCreated={props.showPasswordCreated}
+        togglePasswordCreated={props.togglePasswordCreated}
       />
     </div>
   )

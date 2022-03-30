@@ -1,3 +1,4 @@
+const res = require('express/lib/response')
 const { Person, Post, Group } = require('../models')
 
 const getPersons = async (req, res) => {
@@ -151,7 +152,6 @@ const deleteGroup = async (req, res) => {
 }
 
 const checkUser = async (req, res) => {
-  console.log(req.params)
   try {
     const person = await Person.find(req.params).exec()
     if (person.length > 0) {
@@ -162,6 +162,17 @@ const checkUser = async (req, res) => {
         )
     } else {
       res.status(201).send('Username available!')
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+const verifyUser = async (req, res) => {
+  try {
+    const person = await Person.find(req.params).exec()
+    if (person) {
+      res.status(201).json(person)
     }
   } catch (error) {
     return res.status(500).json({ error: error.message })
@@ -184,5 +195,6 @@ module.exports = {
   deletePerson,
   deletePost,
   deleteGroup,
-  checkUser
+  checkUser,
+  verifyUser
 }

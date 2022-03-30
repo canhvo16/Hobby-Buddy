@@ -34,4 +34,6 @@ router.delete('/group/:id', controllers.deleteGroup)
 
 router.get('/checkPerson/:username', controllers.checkUser)
 
+router.get('/verifyPerson/:username', controllers.verifyUser)
+
 module.exports = router
