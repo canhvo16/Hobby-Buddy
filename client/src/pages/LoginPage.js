@@ -1,62 +1,25 @@
-import axios from 'axios'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import CreateAccount from '../components/CreateAccount'
+import Login from '../components/Login'
 
-const LoginPage = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
-  let navigate = useNavigate()
-
-  const [personUsername, setPersonUsername] = useState('')
-  const [personPassword, setPersonPassword] = useState('')
-
-  const usernameCredential = (e) => {
-    setPersonUsername(e.target.value)
-  }
-
-  const passwordCredential = (e) => {
-    setPersonPassword(e.target.value)
-  }
-
-  const checkCredentials = async (e) => {
-    e.preventDefault()
-    const person = await axios
-      .get(`${BASE_URL}/checkPerson/${personUsername}`)
-      .catch(function (error) {
-        console.log(error)
-      })
-    let personDetails = person.data
-    if (personDetails.password === personPassword) {
-      await setIsLoggedIn(true)
-      navigate(`/profile/${personDetails._id}`)
-    } else {
-      alert(
-        "The username and password you provided do not match! Please remember usernames and passwords are case sensitive and try again! If you're still having trouble, please contact Canh (details in About Page) for assitance, thank you!"
-      )
-    }
-  }
-
+const LoginPage = ({
+  setIsLoggedIn,
+  BASE_URL,
+  isLoggedIn,
+  checkCredentials,
+  personPassword,
+  personUsername,
+  usernameCredential,
+  passwordCredential
+}) => {
   return (
     <div>
-      <h1 className="title">Hobby Buddy</h1>
-      <form className="login" onSubmit={checkCredentials}>
-        <h3>Username</h3>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          value={personUsername}
-          onChange={usernameCredential}
-          required
-        />
-        <h3>Password</h3>
-        <input
-          type="text"
-          placeholder="Enter Password"
-          value={personPassword}
-          onChange={passwordCredential}
-          required
-        />
-        <button>Login</button>
-      </form>
+      <Login
+        checkCredentials={checkCredentials}
+        personPassword={personPassword}
+        personUsername={personUsername}
+        usernameCredential={usernameCredential}
+        passwordCredential={passwordCredential}
+      />
       <CreateAccount
         setIsLoggedIn={setIsLoggedIn}
         BASE_URL={BASE_URL}

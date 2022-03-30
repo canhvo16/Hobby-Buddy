@@ -34,6 +34,4 @@ router.delete('/group/:id', controllers.deleteGroup)
 
 router.get('/checkPerson/:username', controllers.checkUser)
 
-// router.get('/checkPerson', controllers.checkUser)
-
 module.exports = router
