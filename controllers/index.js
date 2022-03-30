@@ -151,10 +151,11 @@ const deleteGroup = async (req, res) => {
 }
 
 const checkUser = async (req, res) => {
+  console.log(req.params)
   try {
-    const person = await Person.findOne(req.params.username).exec()
+    const person = await Person.findOne(req.params).exec()
     if (person) {
-      console.log(person)
+      res.status(201).json(person)
     }
   } catch (error) {
     return res.status(500).json({ error: error.message })

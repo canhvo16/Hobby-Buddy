@@ -19,22 +19,13 @@ const LoginPage = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
 
   const checkCredentials = async (e) => {
     e.preventDefault()
-    let reqBody = { username: personUsername }
     const person = await axios
       .get(`${BASE_URL}/checkPerson/${personUsername}`)
-      .then(console.log(reqBody))
       .catch(function (error) {
         console.log(error)
       })
-    console.log(person.username)
-    // if (person) {
-    //   await setIsLoggedIn(true)
-    //   navigate(`/profile/${person._id}`)
-    // } else {
-    //   alert(
-    //     'The username and password you gave do not match. Usernames and passwords are case sensitive. Please try again!'
-    //   )
-    // }
+    let personDetails = person.data
+    console.log(personDetails)
   }
 
   return (
