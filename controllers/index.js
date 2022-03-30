@@ -150,6 +150,17 @@ const deleteGroup = async (req, res) => {
   }
 }
 
+const checkUser = async (req, res) => {
+  try {
+    const person = await Person.findOne(req.body).exec()
+    if (person) {
+      console.log(person)
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getPersons,
   getPersonById,
@@ -165,5 +176,6 @@ module.exports = {
   updateGroup,
   deletePerson,
   deletePost,
-  deleteGroup
+  deleteGroup,
+  checkUser
 }
