@@ -1,9 +1,9 @@
 const Login = ({ checkCredentials, personPassword, personUsername, usernameCredential, passwordCredential }) => {
   return (
-    <div>
-      <h1 className="title">Hobby Buddy</h1>
+    <div className="loginBox">
+      <h3>Login Info</h3>
       <form className="login" onSubmit={checkCredentials}>
-        <h3>Username</h3>
+        <h5>Username</h5>
         <input
           type="text"
           placeholder="Enter Username"
@@ -11,7 +11,7 @@ const Login = ({ checkCredentials, personPassword, personUsername, usernameCrede
           onChange={usernameCredential}
           required
         />
-        <h3>Password</h3>
+        <h5>Password</h5>
         <input
           type="text"
           placeholder="Enter Password"

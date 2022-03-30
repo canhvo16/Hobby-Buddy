@@ -153,9 +153,15 @@ const deleteGroup = async (req, res) => {
 const checkUser = async (req, res) => {
   console.log(req.params)
   try {
-    const person = await Person.findOne(req.params).exec()
-    if (person) {
-      res.status(201).json(person)
+    const person = await Person.find(req.params).exec()
+    if (person.length > 0) {
+      res
+        .status(201)
+        .send(
+          `Sorry, ${req.params.username} has already been taken, please try another one!`
+        )
+    } else {
+      res.status(201).send('Username available!')
     }
   } catch (error) {
     return res.status(500).json({ error: error.message })

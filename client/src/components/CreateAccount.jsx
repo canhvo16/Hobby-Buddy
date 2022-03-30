@@ -1,72 +1,7 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import axios from 'axios'
-
-const CreateAccount = ({ setIsLoggedIn, BASE_URL }) => {
-
-  let navigate = useNavigate()
-
-  const [name, setName] = useState('')
-  const [age, setAge] = useState()
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [location, setLocation] = useState('') 
-
-  const saveName = (e) => {
-    setName(e.target.value)
-  }
-
-  const saveAge = (e) => {
-    setAge(e.target.value)
-  }
-
-  const saveUsername = (e) => {
-    setUsername(e.target.value)
-  }
-
-  const savePassword = (e) => {
-    setPassword(e.target.value)
-  }
-
-  const saveLocation = (e) => {
-    setLocation(e.target.value)
-  }
-
-  const createPerson = async (e) => {
-    e.preventDefault()
-    const existingUser = await axios
-      .get(`${BASE_URL}/checkPerson/${username}`)
-      .catch(function (error) {
-        console.log(error)
-      })
-    console.log(existingUser)
-    // if (existingUser === { username: username }) {
-    //   alert('A user with that username already exists, please try a different one!')
-    // } else {
-    //   const data = {
-    //     name: name,
-    //     age: age,
-    //     username: username,
-    //     password: password,
-    //     location: location
-    //   }
-    //   let person 
-    //   const savePerson = async () => {
-    //     await axios.post(`${BASE_URL}/person`, data).then(function (response) {
-    //       person = (response.data.person)
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error)
-    //     })
-    //   }
-    //   await savePerson()
-    //   await setIsLoggedIn(true)
-    //   navigate(`/profile/${person._id}`)
-    // }
-  }
+const CreateAccount = ({ createPerson, name, saveName, age, saveAge, username, saveUsername, password, savePassword, location, saveLocation }) => {
 
   return (
-    <div>
+    <div className="createAccountBox">
       <h3>Create an Account</h3>
       <form onSubmit={createPerson}>
         <h5>Name</h5>

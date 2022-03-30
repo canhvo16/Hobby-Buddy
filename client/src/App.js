@@ -14,7 +14,10 @@ const App = () => {
   let nav = isLoggedIn ? (
     <Nav setIsLoggedIn={setIsLoggedIn} />
   ) : (
-    <Link to="/about">About</Link>
+    <div>
+      <h1>Hobby Buddy</h1>
+      <Link to="/about">About</Link>
+    </div>
   )
 
   let navigate = useNavigate()
@@ -22,6 +25,8 @@ const App = () => {
   const [personUsername, setPersonUsername] = useState('')
   const [personPassword, setPersonPassword] = useState('')
 
+  // LoginPage functions
+  ////////////////////////////////////////////////////////////
   const usernameCredential = (e) => {
     setPersonUsername(e.target.value)
   }
@@ -47,6 +52,69 @@ const App = () => {
       )
     }
   }
+  ////////////////////////////////////////////////////////////
+  // CreateAccount functions
+  ////////////////////////////////////////////////////////////
+  const [name, setName] = useState('')
+  const [age, setAge] = useState()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [location, setLocation] = useState('')
+
+  const saveName = (e) => {
+    setName(e.target.value)
+  }
+
+  const saveAge = (e) => {
+    setAge(e.target.value)
+  }
+
+  const saveUsername = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const savePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const saveLocation = (e) => {
+    setLocation(e.target.value)
+  }
+
+  const createPerson = async (e) => {
+    e.preventDefault()
+    const existingUser = await axios
+      .get(`${BASE_URL}/checkPerson/${username}`)
+      .catch(function (error) {
+        console.log(error)
+      })
+    if (existingUser.data === 'Username available!') {
+      const data = {
+        name: name,
+        age: age,
+        username: username,
+        password: password,
+        location: location
+      }
+      let person
+      const savePerson = async () => {
+        await axios
+          .post(`${BASE_URL}/person`, data)
+          .then(function (response) {
+            person = response.data.person
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+      await savePerson()
+      await setIsLoggedIn(true)
+      navigate(`/profile/${person._id}`)
+    } else {
+      alert(existingUser.data)
+    }
+  }
+  ////////////////////////////////////////////////////////////
 
   return (
     <div className="App">
@@ -65,6 +133,17 @@ const App = () => {
                 usernameCredential={usernameCredential}
                 passwordCredential={passwordCredential}
                 checkCredentials={checkCredentials}
+                createPerson={createPerson}
+                name={name}
+                saveName={saveName}
+                age={age}
+                saveAge={saveAge}
+                username={username}
+                saveUsername={saveUsername}
+                password={password}
+                savePassword={savePassword}
+                location={location}
+                saveLocation={saveLocation}
               />
             }
           />
