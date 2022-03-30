@@ -32,6 +32,6 @@ router.delete('/post/:id', controllers.deletePost)
 
 router.delete('/group/:id', controllers.deleteGroup)
 
-router.get('/checkPerson', controllers.checkUser)
+router.get('/checkPerson/:username', controllers.checkUser)
 
 module.exports = router

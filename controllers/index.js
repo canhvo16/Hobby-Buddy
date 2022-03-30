@@ -152,7 +152,7 @@ const deleteGroup = async (req, res) => {
 
 const checkUser = async (req, res) => {
   try {
-    const person = await Person.findOne(req.body).exec()
+    const person = await Person.findOne(req.params.username).exec()
     if (person) {
       console.log(person)
     }

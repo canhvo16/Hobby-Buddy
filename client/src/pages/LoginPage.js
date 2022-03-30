@@ -21,12 +21,12 @@ const LoginPage = ({ setIsLoggedIn, BASE_URL, isLoggedIn }) => {
     e.preventDefault()
     let reqBody = { username: personUsername }
     const person = await axios
-      .get(`${BASE_URL}/checkPerson`, reqBody)
+      .get(`${BASE_URL}/checkPerson/${personUsername}`)
       .then(console.log(reqBody))
       .catch(function (error) {
         console.log(error)
       })
-    console.log(person)
+    console.log(person.username)
     // if (person) {
     //   await setIsLoggedIn(true)
     //   navigate(`/profile/${person._id}`)
