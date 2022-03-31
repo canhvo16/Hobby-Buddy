@@ -121,7 +121,7 @@ const App = () => {
           })
       }
       await savePerson()
-      await setIsLoggedIn(true)
+      setIsLoggedIn(true)
       navigate(`/profile/${person._id}`)
     } else {
       alert(existingUser.data)

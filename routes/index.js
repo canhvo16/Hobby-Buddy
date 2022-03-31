@@ -36,4 +36,6 @@ router.get('/checkPerson/:username', controllers.checkUser)
 
 router.get('/verifyPerson/:username', controllers.verifyUser)
 
+router.get('/getUserPosts/:id', controllers.getUserPosts)
+
 module.exports = router

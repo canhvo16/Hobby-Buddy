@@ -1,4 +1,3 @@
-const res = require('express/lib/response')
 const { Person, Post, Group } = require('../models')
 
 const getPersons = async (req, res) => {
@@ -184,6 +183,18 @@ const verifyUser = async (req, res) => {
   }
 }
 
+const getUserPosts = async (req, res) => {
+  console.log(req.params)
+  try {
+    const posts = await Post.find({ name: req.params.id }).exec()
+    if (posts) {
+      res.status(201).json(posts)
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getPersons,
   getPersonById,
@@ -201,5 +212,6 @@ module.exports = {
   deletePost,
   deleteGroup,
   checkUser,
-  verifyUser
+  verifyUser,
+  getUserPosts
 }

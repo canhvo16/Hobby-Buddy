@@ -8,9 +8,16 @@ import Post from '../components/Post'
 
 const ProfilePage = ({ BASE_URL }) => {
   const [user, setUser] = useState({})
+  const [posts, setPosts] = useState([])
 
   let { id } = useParams()
   let navigate = useNavigate()
+
+  const getPost = async () => {
+    const myPost = await axios.get(`${BASE_URL}/getUserPosts/${id}`)
+    console.log(myPost)
+    setPosts(myPost.data)
+  }
 
   useEffect(() => {
     const getPerson = async () => {
@@ -18,6 +25,7 @@ const ProfilePage = ({ BASE_URL }) => {
       setUser(person.data)
     }
     getPerson()
+    getPost()
   }, [])
 
   const deleteAccount = async () => {
@@ -74,11 +82,12 @@ const ProfilePage = ({ BASE_URL }) => {
 
   // Post functions
   //////////////////////////////////////////////////////
-  let postsArray = user.posts
+
+  //////////////////////////////////////////////////////
 
   return (
     <div>
-      <img src={user.photo} id="profilePhoto" />
+      <img src={user.photo} alt="profilePhoto" />
       <h3>{user.name}</h3>
       <Info user={user} id={id} BASE_URL={BASE_URL} setUser={setUser} />
       <Friends user={user} />
@@ -89,7 +98,9 @@ const ProfilePage = ({ BASE_URL }) => {
         photo={photo}
         savePhoto={savePhoto}
       />
-      <Post user={user} />
+      {posts?.map((post) => (
+        <Post post={post} user={user} key={post._id} />
+      ))}
       <button onClick={deleteAccount}>Delete Account</button>
     </div>
   )
