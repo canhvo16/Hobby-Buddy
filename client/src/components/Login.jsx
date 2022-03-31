@@ -1,7 +1,8 @@
 const Login = ({ checkCredentials, personPassword, personUsername, usernameCredential, passwordCredential, showLoginPassword, toggleLoginPassword }) => {
   return (
     <div className="loginBox">
-      <h3>Login Info</h3>
+      <h2 className="loginTitle">Login Info</h2>
+      <hr/>
       <form className="login" onSubmit={checkCredentials}>
         <h5>Username</h5>
         <input
@@ -19,7 +20,7 @@ const Login = ({ checkCredentials, personPassword, personUsername, usernameCrede
           onChange={passwordCredential}
           required
         />
-        <button>Login</button>
+        <button className="loginButton">Login</button>
       </form>
       <button onClick={toggleLoginPassword}>Show Password</button>
     </div>

@@ -1,10 +1,38 @@
+main {
+  background-color: rgb(231, 231, 231);
+  height: 100vh;
+}
+
 .App {
   text-align: center;
-  padding: 0;
-  margin: 0;
 }
 
 .loginContainer {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(187, 0, 0);
+  color: white;
+}
+
+a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginButton {
+  margin: 10px;
 }

@@ -15,10 +15,12 @@ const App = () => {
   let nav = isLoggedIn ? (
     <Nav setIsLoggedIn={setIsLoggedIn} />
   ) : (
-    <div>
+    <div className="header">
       <h1>Hobby Buddy</h1>
-      <Link to="/">Login Page</Link>
-      <Link to="/about">About</Link>
+      <div className="links">
+        <Link to="/">Login Page</Link>
+        <Link to="/about">About</Link>
+      </div>
     </div>
   )
 
