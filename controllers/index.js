@@ -67,8 +67,13 @@ const createPerson = async (req, res) => {
 
 const createPost = async (req, res) => {
   try {
+    const personId = req.body.name
+    const person = await Person.findById(personId)
     const post = await new Post(req.body)
     await post.save()
+    await Person.findByIdAndUpdate(personId, {
+      posts: [...person.posts, post._id]
+    })
     return res.status(201).json({ post })
   } catch (error) {
     return res.status(500).json({ error: error.message })

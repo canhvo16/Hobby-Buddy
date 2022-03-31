@@ -47,7 +47,6 @@ const App = () => {
         console.log(error)
       })
     let personDetails = person.data[0]
-    console.log(personDetails)
     if (personDetails.password === personPassword) {
       setIsLoggedIn(true)
       navigate(`/profile/${personDetails._id}`)
