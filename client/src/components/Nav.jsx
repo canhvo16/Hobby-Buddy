@@ -11,7 +11,6 @@ const Nav = ({ setIsLoggedIn }) => {
     <header className='header'>
       <h1 className='title'>Hobby Buddy</h1>
       <nav className='nav'>
-        <Link to='/about'>About</Link>
         <Link to='/' onClick={logout}>Logout</Link>
       </nav>
     </header>

@@ -125,7 +125,8 @@ a {
 }
 
 h3,
-h2 {
+h2,
+.aboutTitle {
   color: rgb(238, 108, 108);
   text-shadow: 1px 1px rgb(78, 78, 78);
 }
@@ -143,4 +144,17 @@ h2 {
 
 .postPhoto {
   width: 950px;
+}
+
+.aboutPage {
+  background-color: beige;
+  padding: 20px;
+}
+
+.aboutMe {
+  color: black;
+}
+
+.link {
+  color: black;
 }
