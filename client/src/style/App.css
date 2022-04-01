@@ -1,5 +1,5 @@
 main {
-  background-color: rgb(231, 231, 231);
+  background-color: beige;
   height: 100vh;
 }
 
@@ -16,9 +16,10 @@ main {
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: rgb(187, 0, 0);
+  background-color: rgb(238, 108, 108);
   color: white;
   text-align: center;
+  border-bottom: 4px solid rgb(92, 91, 91);
 }
 
 a {
@@ -40,46 +41,59 @@ a {
 .profile {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  background-color: rgb(231, 231, 231);
+  background-color: beige;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  background-color: rgb(83, 83, 83);
+  background-color: rgb(235, 198, 130);
   color: white;
+  border-right: 3px solid rgb(92, 91, 91);
 }
 
 .profilePhoto {
   border-radius: 1000px;
-  border: 2px solid white;
+  border: 4px solid white;
   margin: 20px 20px 0 20px;
+  width: 350px;
+  height: 350px;
 }
 
 .deleteButton {
   margin: 20px 150px 20px 150px;
-  color: rgb(187, 0, 0);
+  color: rgb(238, 108, 108);
 }
 
 .title {
   font-size: 50px;
+  text-shadow: 3px 3px rgb(80, 80, 80);
+}
+
+.nav {
+  text-shadow: 2px 2px rgb(80, 80, 80);
 }
 
 .name {
+  font-size: 40px;
   color: white;
   text-align: center;
+  text-shadow: 1px 1px black;
 }
 
 .infoBox,
 .editorBox,
 .friends {
+  font-size: 18px;
   align-items: flex-start;
   color: white;
   padding: 15px;
+  text-shadow: 1px 1px black;
 }
 
 .infoHr {
   width: 350px;
+  border: 1px solid white;
 }
 
 .form {
@@ -105,4 +119,24 @@ a {
 .postBox {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 0 0 20px 0;
+}
+
+h3,
+h2 {
+  color: rgb(238, 108, 108);
+  text-shadow: 1px 1px rgb(78, 78, 78);
+}
+
+.postHr {
+  width: 900px;
+}
+
+.post {
+  border: 2px solid black;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
 }

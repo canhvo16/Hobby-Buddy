@@ -1,9 +1,11 @@
 const Post = ({ post, user }) => {
 
+  let photo = (post.photo) ? <img src={post.photo} alt='postImage' /> : null 
+
   return (
-    <div>
+    <div className="post">
       <h3>{user.name}</h3>
-      {/* <img src={myPostDetails.photo} alt='postImage' /> */}
+      {photo}
       <p>{post.text}</p>
     </div>
   )

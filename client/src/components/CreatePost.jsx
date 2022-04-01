@@ -6,7 +6,7 @@ const CreatePost = ({ createPost, text, saveText, photo, savePhoto }) => {
     <form onSubmit={createPost} className='postBox'>
       <textarea type='text' placeholder="What's on you're mind..." value={text} onChange={saveText} cols='100' rows='5' required/>
       <input type="text" placeholder="Photo URL" value={photo} onChange={savePhoto} />
-      <button>Post</button>
+      <button className="postButton">Post</button>
     </form>
   </div>
   )

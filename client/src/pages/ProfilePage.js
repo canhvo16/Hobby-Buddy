@@ -107,9 +107,13 @@ const ProfilePage = ({ BASE_URL }) => {
           photo={photo}
           savePhoto={savePhoto}
         />
-        {posts?.map((post) => (
-          <Post post={post} user={user} key={post._id} />
-        ))}
+        <hr className="postHr" />
+        <div>
+          <h2 className="login">Posts</h2>
+          {posts?.map((post) => (
+            <Post post={post} user={user} key={post._id} />
+          ))}
+        </div>
       </div>
     </div>
   )
