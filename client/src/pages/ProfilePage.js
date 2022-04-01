@@ -35,8 +35,17 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
         'This will permanently delete your account, are you sure this is what you want to do?'
       )
     ) {
-      await axios.delete(`${BASE_URL}/person/${id}`)
-      navigate('/')
+      if (
+        window.confirm(
+          'Please reconsider, I need users..., are you sure you want to delete your acount?'
+        )
+      ) {
+        await axios.delete(`${BASE_URL}/person/${id}`)
+        setIsLoggedIn(false)
+        navigate('/')
+      } else {
+        console.log('Pressed no')
+      }
     } else {
       console.log('Pressed no')
     }
