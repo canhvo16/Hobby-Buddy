@@ -7,7 +7,6 @@ const Info = ({ user, BASE_URL, setUser }) => {
   const [showEditor, setShowEditor] = useState(false)
   const [newName, setNewName] = useState(user.name)
   const [newPhoto, setNewPhoto] = useState(user.photo)
-  const [newCover, setNewCover] = useState(user.cover)
   const [newAge, setNewAge] = useState(user.age)
   const [newLocation, setNewLocation] = useState(user.location)
   const [newHobbies, setNewHobbies] = useState(user.hobbies)
@@ -27,10 +26,6 @@ const Info = ({ user, BASE_URL, setUser }) => {
 
   const updatePhoto = (e) => {
     setNewPhoto(e.target.value)
-  }
-
-  const updateCover = (e) => {
-    setNewCover(e.target.value)
   }
 
   const updateAge = (e) => {
@@ -64,7 +59,6 @@ const Info = ({ user, BASE_URL, setUser }) => {
       username: newUsername,
       password: newPassword,
       photo: newPhoto,
-      cover: newCover,
       age: newAge,
       location: newLocation,
       hobbies: newHobbies,
@@ -84,13 +78,11 @@ const Info = ({ user, BASE_URL, setUser }) => {
   }
 
   let editBox = showEditor ? (<div className="editorBox">
-  <form onSubmit={updatePersonInfo}>
+  <form onSubmit={updatePersonInfo} className='form'>
     <h5>Name</h5>
     <input type='text' placeholder="Name" value={newName} onChange={updateName}/>
     <h5>Photo URL</h5>
     <input type='text' placeholder="Photo URL" value={newPhoto} onChange={updatePhoto} />
-    <h5>CoverPhoto URL</h5>
-    <input type='text' placeholder="Cover Photo URL" value={newCover} onChange={updateCover}/>
     <h5>Hobbies</h5>
     <input type='text' placeholder="Hobbies" value={newHobbies} onChange={updateHobbies}/>
     <h5>Interests</h5>
@@ -110,14 +102,13 @@ const Info = ({ user, BASE_URL, setUser }) => {
       <option value="Houston, TX">Houston, TX</option>
       <option value="Phoenix, AZ">Phoenix, AZ</option>
     </select>
-    <button>Save Changes</button>
+    <button className="saveButton">Save Changes</button>
   </form>
 </div>) : null
 
   return (
   <div>
     <div className="infoBox">
-      <h4>Info</h4>
       <p><strong>Age:</strong> {user.age}</p>
       <p><strong>Location:</strong> {user.location}</p>
       <p><strong>Hobbies:</strong> {user.hobbies}</p>

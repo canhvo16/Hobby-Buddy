@@ -16,7 +16,7 @@ const App = () => {
     <Nav setIsLoggedIn={setIsLoggedIn} />
   ) : (
     <div className="header">
-      <h1>Hobby Buddy</h1>
+      <h1 className="title">Hobby Buddy</h1>
       <div className="links">
         <Link to="/">Login Page</Link>
         <Link to="/about">About</Link>

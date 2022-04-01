@@ -86,22 +86,31 @@ const ProfilePage = ({ BASE_URL }) => {
   //////////////////////////////////////////////////////
 
   return (
-    <div>
-      <img src={user.photo} alt="profilePhoto" />
-      <h3>{user.name}</h3>
-      <Info user={user} id={id} BASE_URL={BASE_URL} setUser={setUser} />
-      <Friends user={user} />
-      <CreatePost
-        createPost={createPost}
-        text={text}
-        saveText={saveText}
-        photo={photo}
-        savePhoto={savePhoto}
-      />
-      {posts?.map((post) => (
-        <Post post={post} user={user} key={post._id} />
-      ))}
-      <button onClick={deleteAccount}>Delete Account</button>
+    <div className="profile">
+      <div className="info">
+        <img className="profilePhoto" src={user.photo} alt="profilePhoto" />
+        <h1 className="name">{user.name}</h1>
+        <hr className="infoHr" />
+        <Info user={user} id={id} BASE_URL={BASE_URL} setUser={setUser} />
+        <hr className="infoHr" />
+        <Friends user={user} />
+        <hr className="infoHr" />
+        <button onClick={deleteAccount} className="deleteButton">
+          Delete Account
+        </button>
+      </div>
+      <div className="postTimeline">
+        <CreatePost
+          createPost={createPost}
+          text={text}
+          saveText={saveText}
+          photo={photo}
+          savePhoto={savePhoto}
+        />
+        {posts?.map((post) => (
+          <Post post={post} user={user} key={post._id} />
+        ))}
+      </div>
     </div>
   )
 }

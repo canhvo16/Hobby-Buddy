@@ -7,8 +7,8 @@ const Nav = ({ setIsLoggedIn }) => {
   }
 
   return (
-    <header>
-      <h1>Hobby Buddy</h1>
+    <header className='header'>
+      <h1 className='title'>Hobby Buddy</h1>
       <nav className='nav'>
         <Link to='/home'>Home</Link>
         <Link to='/about'>About</Link>

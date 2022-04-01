@@ -3,7 +3,8 @@ const CreateAccount = ({ createPerson, name, saveName, age, saveAge, username, s
   return (
     <div className="createAccountBox">
       <h3>Create an Account</h3>
-      <form onSubmit={createPerson}>
+      <hr/>
+      <form onSubmit={createPerson} className='login'>
         <h5>Name</h5>
         <input type='text' placeholder="Name" value={name} onChange={saveName} required/>
         <h5>Age</h5>
@@ -22,7 +23,7 @@ const CreateAccount = ({ createPerson, name, saveName, age, saveAge, username, s
           <option value="Houston, TX">Houston, TX</option>
           <option value="Phoenix, AZ">Phoenix, AZ</option>
         </select>
-        <button>Create Account</button>
+        <button className="loginButton">Create Account</button>
       </form>
     </div>
   )

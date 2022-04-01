@@ -3,23 +3,22 @@ main {
   height: 100vh;
 }
 
-.App {
-  text-align: center;
-}
-
 .loginContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: rgb(187, 0, 0);
   color: white;
+  text-align: center;
 }
 
 a {
@@ -31,8 +30,79 @@ a {
 .login {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .loginButton {
-  margin: 10px;
+  margin: 20px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  background-color: rgb(231, 231, 231);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(83, 83, 83);
+  color: white;
+}
+
+.profilePhoto {
+  border-radius: 1000px;
+  border: 2px solid white;
+  margin: 20px 20px 0 20px;
+}
+
+.deleteButton {
+  margin: 20px 150px 20px 150px;
+  color: rgb(187, 0, 0);
+}
+
+.title {
+  font-size: 50px;
+}
+
+.name {
+  color: white;
+  text-align: center;
+}
+
+.infoBox,
+.editorBox,
+.friends {
+  align-items: flex-start;
+  color: white;
+  padding: 15px;
+}
+
+.infoHr {
+  width: 350px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.saveButton {
+  margin: 30px 0 0 0;
+}
+
+.postTimeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postBox {
+  display: flex;
+  flex-direction: column;
 }
