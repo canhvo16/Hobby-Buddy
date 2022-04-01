@@ -4,6 +4,7 @@ const Nav = ({ setIsLoggedIn }) => {
 
   const logout = () => {
     setIsLoggedIn(false)
+    localStorage.removeItem('loggedIn')
   }
 
   return (

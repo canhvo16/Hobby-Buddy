@@ -51,6 +51,7 @@ const App = () => {
     let personDetails = person.data[0]
     if (personDetails.password === personPassword) {
       setIsLoggedIn(true)
+      localStorage.setItem('loggedIn', { isLoggedIn })
       navigate(`/profile/${personDetails._id}`)
     } else {
       alert(
@@ -124,6 +125,7 @@ const App = () => {
       }
       await savePerson()
       setIsLoggedIn(true)
+      localStorage.setItem('loggedIn', { isLoggedIn })
       navigate(`/profile/${person._id}`)
     } else {
       alert(existingUser.data)
@@ -168,7 +170,9 @@ const App = () => {
           />
           <Route
             path="/profile/:id"
-            element={<ProfilePage BASE_URL={BASE_URL} />}
+            element={
+              <ProfilePage BASE_URL={BASE_URL} setIsLoggedIn={setIsLoggedIn} />
+            }
           />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

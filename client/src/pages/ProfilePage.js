@@ -6,16 +6,16 @@ import Friends from '../components/Friends'
 import CreatePost from '../components/CreatePost'
 import Post from '../components/Post'
 
-const ProfilePage = ({ BASE_URL }) => {
-  const [user, setUser] = useState({})
+const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
   const [posts, setPosts] = useState([])
+  const [user, setUser] = useState({})
 
   let { id } = useParams()
   let navigate = useNavigate()
+  let loggedIn = localStorage.getItem('loggedIn')
 
   const getPost = async () => {
     const myPost = await axios.get(`${BASE_URL}/getUserPosts/${id}`)
-    console.log(myPost)
     setPosts(myPost.data)
   }
 
@@ -23,6 +23,7 @@ const ProfilePage = ({ BASE_URL }) => {
     const getPerson = async () => {
       let person = await axios.get(`${BASE_URL}/person/${id}`)
       setUser(person.data)
+      setIsLoggedIn(loggedIn)
     }
     getPerson()
     getPost()
@@ -55,7 +56,6 @@ const ProfilePage = ({ BASE_URL }) => {
   }
 
   const createPost = (e) => {
-    e.preventDefault()
     let data
     if (photo === '') {
       data = {
