@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Nav = ({ setIsLoggedIn }) => {
-
-  const logout = () => {
-    setIsLoggedIn(false)
-    localStorage.removeItem('loggedIn')
-  }
+const Nav = ({ logout}) => {
 
   return (
     <header className='header'>

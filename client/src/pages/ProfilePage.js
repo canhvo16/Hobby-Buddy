@@ -9,7 +9,11 @@ import Post from '../components/Post'
 const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState({})
-
+  //CreatePost useStates
+  ////////////////////////////////////////////////////
+  const [text, setText] = useState('')
+  const [photo, setPhoto] = useState('')
+  ////////////////////////////////////////////////////
   let { id } = useParams()
   let navigate = useNavigate()
   let loggedIn = localStorage.getItem('loggedIn')
@@ -52,10 +56,7 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
   }
 
   // CreatePost functions
-  //////////////////////////////////////////////////////
-  const [text, setText] = useState('')
-  const [photo, setPhoto] = useState('')
-
+  ////////////////////////////////////////////////////
   const saveText = (e) => {
     setText(e.target.value)
   }
@@ -87,11 +88,6 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
     setText('')
     setPhoto('')
   }
-  //////////////////////////////////////////////////////
-
-  // Post functions
-  //////////////////////////////////////////////////////
-
   //////////////////////////////////////////////////////
 
   return (

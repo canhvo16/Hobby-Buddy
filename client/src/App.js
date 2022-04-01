@@ -11,13 +11,31 @@ import './style/App.css'
 const App = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // CreateAccount useStates
+  ////////////////////////////////////////////////////////////
+  const [name, setName] = useState('')
+  const [age, setAge] = useState()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [location, setLocation] = useState('')
+  const [showPasswordCreated, setShowPasswordCreated] = useState(false)
+  // LoginPage useStates
+  ////////////////////////////////////////////////////////////
+  const [personUsername, setPersonUsername] = useState('')
+  const [personPassword, setPersonPassword] = useState('')
+  const [showLoginPassword, setShowLoginPassword] = useState(false)
+
+  const logout = () => {
+    setIsLoggedIn(false)
+    localStorage.removeItem('loggedIn')
+  }
 
   let nav = isLoggedIn ? (
-    <Nav setIsLoggedIn={setIsLoggedIn} />
+    <Nav logout={logout} />
   ) : (
     <div className="header">
       <h1 className="title">Hobby Buddy</h1>
-      <div className="links">
+      <div className="links nav">
         <Link to="/">Login Page</Link>
         <Link to="/about">About</Link>
       </div>
@@ -28,11 +46,6 @@ const App = () => {
 
   // LoginPage functions
   ////////////////////////////////////////////////////////////
-
-  const [personUsername, setPersonUsername] = useState('')
-  const [personPassword, setPersonPassword] = useState('')
-  const [showLoginPassword, setShowLoginPassword] = useState(false)
-
   const usernameCredential = (e) => {
     setPersonUsername(e.target.value)
   }
@@ -63,16 +76,9 @@ const App = () => {
   const toggleLoginPassword = () => {
     setShowLoginPassword(!showLoginPassword)
   }
-  ////////////////////////////////////////////////////////////
+
   // CreateAccount functions
   ////////////////////////////////////////////////////////////
-  const [name, setName] = useState('')
-  const [age, setAge] = useState()
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [location, setLocation] = useState('')
-  const [showPasswordCreated, setShowPasswordCreated] = useState(false)
-
   const togglePasswordCreated = () => {
     setShowPasswordCreated(!showPasswordCreated)
   }
@@ -131,7 +137,6 @@ const App = () => {
       alert(existingUser.data)
     }
   }
-  ////////////////////////////////////////////////////////////
 
   return (
     <div className="App">

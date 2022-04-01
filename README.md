@@ -43,10 +43,9 @@
 
 ### **_Future Updates_**
 
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
+- [ ] Let users search for other users based on location and hobbies/interests
+- [ ] Have a homepage where users can see other users posts
+- [ ] Have Group Pages for people with similar hobbies
 
 ---
 
