@@ -57,7 +57,7 @@ const App = () => {
   const checkCredentials = async (e) => {
     e.preventDefault()
     const person = await axios
-      .get(`/api/verifyPerson/${personUsername}`)
+      .get(`/verifyPerson/${personUsername}`)
       .catch(function (error) {
         console.log(error)
       })
@@ -106,7 +106,7 @@ const App = () => {
   const createPerson = async (e) => {
     e.preventDefault()
     const existingUser = await axios
-      .get(`/api/checkPerson/${username}`)
+      .get(`/checkPerson/${username}`)
       .catch(function (error) {
         console.log(error)
       })
@@ -121,7 +121,7 @@ const App = () => {
       let person
       const savePerson = async () => {
         await axios
-          .post(`/api/person`, data)
+          .post(`/person`, data)
           .then(function (response) {
             person = response.data.person
           })

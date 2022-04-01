@@ -19,13 +19,13 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
   let loggedIn = localStorage.getItem('loggedIn')
 
   const getPost = async () => {
-    const myPost = await axios.get(`/api/getUserPosts/${id}`)
+    const myPost = await axios.get(`/getUserPosts/${id}`)
     setPosts(myPost.data)
   }
 
   useEffect(() => {
     const getPerson = async () => {
-      let person = await axios.get(`/api/person/${id}`)
+      let person = await axios.get(`/person/${id}`)
       setUser(person.data)
       setIsLoggedIn(loggedIn)
     }
@@ -80,7 +80,7 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
       }
     }
     const savePost = async () => {
-      await axios.post(`/api/post`, data).catch(function (error) {
+      await axios.post(`/post`, data).catch(function (error) {
         console.log(error)
       })
     }
