@@ -65,7 +65,7 @@ const Info = ({ user, BASE_URL, setUser }) => {
       interests: newInterests
     }
     const updatePerson = async () => {
-      await axios.put(`${BASE_URL}/person/${id}`, data).then(function (response) {
+      await axios.put(`/api/person/${id}`, data).then(function (response) {
         setUser(response.data)
         console.log(response.data)
       })

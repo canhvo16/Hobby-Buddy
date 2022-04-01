@@ -19,13 +19,13 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
   let loggedIn = localStorage.getItem('loggedIn')
 
   const getPost = async () => {
-    const myPost = await axios.get(`${BASE_URL}/getUserPosts/${id}`)
+    const myPost = await axios.get(`/api/getUserPosts/${id}`)
     setPosts(myPost.data)
   }
 
   useEffect(() => {
     const getPerson = async () => {
-      let person = await axios.get(`${BASE_URL}/person/${id}`)
+      let person = await axios.get(`/api/person/${id}`)
       setUser(person.data)
       setIsLoggedIn(loggedIn)
     }
@@ -44,7 +44,7 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
           'Please reconsider, I need users..., are you sure you want to delete your acount?'
         )
       ) {
-        await axios.delete(`${BASE_URL}/person/${id}`)
+        await axios.delete(`/api/person/${id}`)
         setIsLoggedIn(false)
         navigate('/')
       } else {
@@ -80,7 +80,7 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
       }
     }
     const savePost = async () => {
-      await axios.post(`${BASE_URL}/post`, data).catch(function (error) {
+      await axios.post(`/api/post`, data).catch(function (error) {
         console.log(error)
       })
     }
