@@ -37,7 +37,15 @@
 
 **Component Hierarchy Diagram & Entity Relationship Diagram**
 
-![Image](assets/Hobby-Buddy-CHD.drawio.png)
+![Image](assets/Hobby-Buddy-CHD&ERD.png)
+
+**Login Page**
+
+![Image](assets/Hobby-Buddy1.png)
+
+**Profile Page**
+
+![Image](assets/Hobby-Buddy2.png)
 
 ---
 
