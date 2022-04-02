@@ -121,7 +121,7 @@ const App = () => {
       let person
       const savePerson = async () => {
         await axios
-          .post(`/person`, data)
+          .post(`/api/person`, data)
           .then(function (response) {
             person = response.data.person
           })

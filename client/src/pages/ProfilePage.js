@@ -46,6 +46,7 @@ const ProfilePage = ({ BASE_URL, setIsLoggedIn }) => {
       ) {
         await axios.delete(`/api/person/${id}`)
         setIsLoggedIn(false)
+        localStorage.removeItem('loggedIn')
         navigate('/')
       } else {
         console.log('Pressed no')
